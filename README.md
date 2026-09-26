@@ -2,7 +2,7 @@
 
 EcuFlash definition for the 2015 JDM BRZ MT, ROM ZA1JF00A.
 
-Author: Syunji.S  2026-09-27
+Author: S.S  2026-09-27
 
 This definition is for advanced users only. Use at your own risk. The author is not responsible for any damage, injury, or failure resulting from the use of this definition.
 
