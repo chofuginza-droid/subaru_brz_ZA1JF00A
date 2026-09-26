@@ -1,6 +1,6 @@
 # ZA1JF00A definition list
 
-Author: Syunji.S  2026-09-27
+Author: S.S  2026-09-27
 
 The ROM is `read_image_normal.srf`. Addresses are ECU addresses. The checksum is left as `subarudbw`. It is not a map, so it is not in this list.
 
