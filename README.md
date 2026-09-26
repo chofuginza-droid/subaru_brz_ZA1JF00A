@@ -6,7 +6,7 @@ Author: Syunji.S  2026-09-27
 
 This definition is for advanced users only. Use at your own risk. The author is not responsible for any damage, injury, or failure resulting from the use of this definition.
 
-Read `tuning-tables.ja.md` or `tuning-tables.en.md` before tuning. `ZA1JF00A.xml` contains only tables that were confirmed. Tables that could not be pinned down are listed in those files and are not in the definition.
+Read `ZA1JF00A-definition-list.ja.md` or `ZA1JF00A-definition-list.en.md` before tuning. `ZA1JF00A.xml` contains only tables that were confirmed. Tables that could not be pinned down are listed in those files and are not in the definition.
 
 For Per Injector Pulse Width Compensation and Transient Ignition Retard, the addresses are correct but the formulas are not. Do not trust the displayed values.
 
