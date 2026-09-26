@@ -1,6 +1,6 @@
 # ZA1JF00A 定義の一覧
 
-Author: Syunji.S  2026-09-27
+Author: S.S  2026-09-27
 
 ROM は `read_image_normal.srf` です。番地は ECU アドレスです。チェックサムは `subarudbw` のままにした。マップではないので、この表には入れていません。
 
