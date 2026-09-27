@@ -2,7 +2,7 @@
 
 Author: S.S  2026-09-27
 
-Data Addresses are ECU addresses. The checksum is left as `subarudbw`. It is not a map, so it is not in this list.
+Data Addresses are ECU addresses. The checksum is left as `subarudbw`. 
 
 A confirmed table is one whose axes and values appeared as a map in EcuFlash. `ZA1JF00A.xml` keeps only confirmed tables. Tables that could not be pinned down were removed from the definition file.
 
