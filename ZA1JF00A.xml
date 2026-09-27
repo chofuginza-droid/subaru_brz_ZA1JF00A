@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 2015 前期D型 MT JDM. EcuFlash DEFINITION FILE FOR ZA1JF00A
-Author: Syunji.S  2026-09-27
+Author: S.S  2026-09-27
 
 WARNING: この定義は上級者用です。利用は自己責任です。作者は、この定義の利用によって生じた損害、けが、故障について責任を負いません。
 気筒別の噴射補正 (Per Injector Pulse Width Compensation)、過渡の点火遅角 (Transient Ignition Retard) は、番地は合っているが計算式が違っている。表示されている値を信じてはいけない。ZA1JF00A-definition-list.ja.md または ZA1JF00A-definition-list.en.md を見ること。
