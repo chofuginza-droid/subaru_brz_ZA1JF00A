@@ -240,6 +240,19 @@ For Per Injector Pulse Width Compensation and Transient Ignition Retard, the add
     <table name="X" address="1105d8" />
     <table name="Y" address="110604" />
   </table>
+  <table name="Total Injection Ratio Port Cold" address="110afc">
+    <table name="X" address="110aa4" />
+    <table name="Y" address="110ad4" />
+  </table>
+  <table name="Total Injection Ratio Port Hot" address="110bcc">
+    <description>この ROM ではプログラムがゲートを毎回 0 にするので、この表は読まれない。60 以上では Warm を読む。ZA1JF00A-definition-list.ja.md または ZA1JF00A-definition-list.en.md を見ること。 On this ROM the program clears the gate on every call, so this map is not read. From 60 up the ECU reads Warm. See ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.</description>
+    <table name="X" address="110b74" />
+    <table name="Y" address="110ba4" />
+  </table>
+  <table name="Total Injection Ratio Port Warm" address="110c9c">
+    <table name="X" address="110c44" />
+    <table name="Y" address="110c74" />
+  </table>
   <table name="Primary Open Loop Fueling Additive" address="111238">
     <table name="X" address="1111a8" elements="13" />
     <table name="Y" address="1111dc" elements="23" />
