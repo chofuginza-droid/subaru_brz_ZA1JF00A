@@ -14,4 +14,4 @@ Copy `ZA1JF00A.xml` to:
 
 `C:\Program Files (x86)\OpenECU\EcuFlash\rommetadata\subaru\BRZ\2015\`
 
-Restart EcuFlash after copying. Leave the markdown files outside the EcuFlash folder.
+Restart EcuFlash after copying.
