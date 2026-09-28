@@ -6,7 +6,9 @@ Author: S.S
 
 Use at your own risk. The author is not responsible for any damage, injury, or failure resulting from the use of this definition.
 
-Read `ZA1JF00A-definition-list.ja.md` or `ZA1JF00A-definition-list.en.md` before tuning. `ZA1JF00A.xml` contains only tables that were confirmed. Tables that could not be pinned down are listed in those files and are not in the definition.
+**Warning:** Before writing any changes, read the ECU and keep a backup of the original ROM.
+
+Read `ZA1JF00A-definition-list.ja.md` or `ZA1JF00A-definition-list.en.md` before tuning.
 
 Copy `ZA1JF00A.xml` to:
 
