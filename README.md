@@ -2,13 +2,11 @@
 
 EcuFlash definition for the 2015 JDM BRZ MT, ROM ZA1JF00A.
 
-Author: S.S  2026-09-27
+Author: S.S
 
-This definition is for advanced users only. Use at your own risk. The author is not responsible for any damage, injury, or failure resulting from the use of this definition.
+Use at your own risk. The author is not responsible for any damage, injury, or failure resulting from the use of this definition.
 
 Read `ZA1JF00A-definition-list.ja.md` or `ZA1JF00A-definition-list.en.md` before tuning. `ZA1JF00A.xml` contains only tables that were confirmed. Tables that could not be pinned down are listed in those files and are not in the definition.
-
-For Per Injector Pulse Width Compensation and Transient Ignition Retard, the addresses are correct but the formulas are not. Do not trust the displayed values.
 
 Copy `ZA1JF00A.xml` to:
 

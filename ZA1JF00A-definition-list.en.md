@@ -1,10 +1,8 @@
 # ZA1JF00A definition list
 
-Author: S.S  2026-09-27
+Author: S.S
 
-Data Addresses are ECU addresses. The checksum is left as `subarudbw`. 
-
-A confirmed table is one whose axes and values appeared as a map in EcuFlash. `ZA1JF00A.xml` keeps only confirmed tables. Tables that could not be pinned down were removed from the definition file.
+`ZA1JF00A.xml` contains only tables whose addresses and conversions were checked on this ROM and that appeared as maps in EcuFlash. Tables that could not be pinned down are listed in a separate table later in this file.
 
 ## Confirmed
 
@@ -32,11 +30,11 @@ A confirmed table is one whose axes and values appeared as a map in EcuFlash. `Z
 | Timing Compensation Per Cylinder D | `116f14` | RPM `116ebc` 16 points, load `116efc` 6 points | 0 degrees everywhere |
 | Requested Torque B (Accelerator Pedal) | `13cd38` | Pedal `13cc9c` 16 points, RPM `13ccdc` 23 points | 0 at 0% pedal. At 100%, 148.9 at 800 rpm, rising to around 200 at high RPM |
 | Requested Torque A (Accelerator Pedal) | `103a18` | Pedal `103990` 16 points, RPM `1039d0` 18 points | Pedal 0, 10, …, 100%. RPM 800–7600. 250 at 800 rpm and 100%, 171 at 7600 rpm and 100% |
-| Per Injector Pulse Width Compensation A–H | 8 maps from `111620` | Pulse width `1115cc` 9 points, RPM `1115f0` 12 points | A is 1–17 ms, RPM 800–7200. The whole map shows -50.00. The raw value is 64. In the shared base `32BITBASE.xml`, scaling `InjectorPulseWidthCompensation` is `toexpr="(x*.78125)-100"`. 128 is 0%, so 64 displays as -50. That is outside this formula's range. The formula was left as-is, so it stays -50. B–H are the same bytes |
+| Per Injector Pulse Width Compensation A–H | A `111620`, B `1116e0`, C `1117a0`, D `111860`, E `111920`, F `1119e0`, G `111aa0`, H `111b60` | Pulse width from A `1115cc`, every 0xC0, 9 points. RPM from A `1115f0`, every 0xC0, 12 points | Pulse width 1–17 ms, RPM 800–7200. All 8 maps are raw 64. Map descriptor A at `b5a14` has scale 0.015625 and offset 0. 64 is a multiplier of 1.0000. Scaling in this file is `PerInjectorBRZ` |
 | Target Throttle Plate Position Maximum | `13c834` | Requested torque `13c784` 21 points, RPM `13c7d8` 23 points | Requested torque 0–1, RPM 800–7400. Opening goes from 0% to about 102.4% in the last column |
 | Engine Load Compensation (MP) | `104ed0` | Manifold pressure `104e5c` 14 points, RPM `104e94` 15 points | Manifold pressure -11.31–0.00 psi, RPM 600–4800. About +4–8% on the high-vacuum side, around 0% near atmospheric pressure |
-| Transient Ignition Retard | `116a98` | Load `116a1c` 7 points, RPM `116a38` 24 points | Load 0.15–0.70, RPM 800–7400. In the shared base `32BITBASE.xml`, scaling `TransientIgnitionRetard` is `toexpr="x*.3515625-30"`. 0 degrees is about raw value 85. At 800 rpm the range is 10.08 degrees (raw 114) to 19.92 degrees (raw 142). Through 5200 rpm, low load is also about 19.92 degrees, but from 5600 rpm, only load about 0.15–0.50 has raw value 43 and shows -14.88 degrees. Load 0.60 and 0.70 stay at 19.92 degrees. The negative number is the formula displaying a raw value below 85 as below zero. The shared base range is 0–26.72 degrees, so this is outside that range. The formula was not changed |
-| Transient Ignition Retard Temperature Compensation | `1169ac` | Coolant `116950` 16 points, intake air temperature `116990` 7 points | Coolant -40–230°F (raw -40–110°C), intake air -40–176°F (raw -40–80°C). Every cell is 1.0000. The raw value is 128, and the shared base unit label is Estimated Air/Fuel Ratio. It is 1.00 on that formula, not degrees of ignition |
+| Transient Ignition Retard | `116a98` | Load `116a1c` 7 points, RPM `116a38` 24 points | Load 0.15–0.70, RPM 800–7400. Map descriptor `b6f90` has scale 0.3515625 and offset -50. At 800 rpm the cells run from -9.92 degrees (raw 114) to -0.08 degrees (raw 142). From 6000 rpm, load 0.15–0.30 is raw 43 and -34.88 degrees, load 0.40 is raw 85 and -20.12 degrees, load 0.50 is raw 114 and -9.92 degrees, and load 0.60 and 0.70 are raw 142 and -0.08 degrees. Scaling in this file is `TransientRetardBRZ` |
+| Transient Ignition Retard Temperature Compensation | `1169ac` | Coolant `116950` 16 points, intake air temperature `116990` 7 points | Coolant -40–230°F (raw -40–110°C), intake air -40–176°F (raw -40–80°C). Every cell is 1.0000. The raw value is 128. Map descriptor `b6f74` has scale 0.0078125 and offset 0, so 128 is a multiplier of 1.0000. Scaling in this file is `TransientRetardTempBRZ` |
 | Calculated Torque A | `101fb0` | Load `101f24` 12 points, RPM `101f54` 23 points | Load 0.10–1.20, RPM 800–7400. Starts at 14.01 at 800 rpm, and is 143.32 from load 1.00 up. At high RPM, low load is around 40 and high load is around 220 |
 | Calculated Torque B | `102260` | Load `1021d8` 11 points, RPM `102204` 23 points | Load 0.10–1.10, RPM 800–7400. Starts at 14.01 at 800 rpm, and is 115.87 from load 0.70 up |
 | Cylinder Fill Percentage | `1075c4` | RPM `10752c` 16 points, throttle `10756c` 22 points | RPM 800–6800, throttle 0–84%. 0% is 0 everywhere. It approaches 100 as the throttle opens, and is lower at high RPM. Even at 84%, high RPM is below 100 |

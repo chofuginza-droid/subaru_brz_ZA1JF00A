@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 2015 前期D型 MT JDM. EcuFlash DEFINITION FILE FOR ZA1JF00A
-Author: S.S  2026-09-27
+<!-- 2015 MT JDM. EcuFlash DEFINITION FILE FOR ZA1JF00A
+Author: S.S
 
-WARNING: この定義は上級者用です。利用は自己責任です。作者は、この定義の利用によって生じた損害、けが、故障について責任を負いません。
-気筒別の噴射補正 (Per Injector Pulse Width Compensation)、過渡の点火遅角 (Transient Ignition Retard) は、番地は合っているが計算式が違っている。表示されている値を信じてはいけない。ZA1JF00A-definition-list.ja.md または ZA1JF00A-definition-list.en.md を見ること。
-This definition is for advanced users only. Use at your own risk. The author is not responsible for any damage, injury, or failure resulting from the use of this definition.
-For Per Injector Pulse Width Compensation and Transient Ignition Retard, the addresses are correct but the formulas are not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.
+WARNING: Use at your own risk. The author is not responsible for any damage, injury, or failure resulting from the use of this definition.
 -->
 <rom>
   <romid>
@@ -26,6 +23,9 @@ For Per Injector Pulse Width Compensation and Transient Ignition Retard, the add
   <include>32BITBASE</include>
   <scaling name="MAFAfterStart(g/s)" units="g/s" toexpr="x*0.004577637" frexpr="x/0.004577637" format="%.1f" min="0" max="80" inc="0.1" storagetype="uint16" endian="big"/>
   <scaling name="RetardBRZ(degrees)u8" units="Retard (degrees)" toexpr="x-40" frexpr="x+40" format="%.2f" min="-40" max="40" inc="1" storagetype="uint8" endian="big"/>
+  <scaling name="PerInjectorBRZ" units="Injector Pulse Width Multiplier" toexpr="x*0.015625" frexpr="x/0.015625" format="%.4f" min="0" max="3.984375" inc="0.015625" storagetype="uint8" endian="big"/>
+  <scaling name="TransientRetardBRZ" units="Ignition Timing Correction (degrees)" toexpr="x*0.3515625-50" frexpr="(x+50)/0.3515625" format="%.2f" min="-50" max="39.65" inc="0.3515625" storagetype="uint8" endian="big"/>
+  <scaling name="TransientRetardTempBRZ" units="Multiplier" toexpr="x*0.0078125" frexpr="x/0.0078125" format="%.4f" min="0" max="1.9921875" inc="0.0078125" storagetype="uint8" endian="big"/>
   <table name="Primary Open Loop Fueling" address="117064">
     <table name="X" address="116fd0" elements="14" />
     <table name="Y" address="117008" elements="23" />
@@ -45,45 +45,37 @@ For Per Injector Pulse Width Compensation and Transient Ignition Retard, the add
     <table name="X" address="112378" elements="5" />
     <table name="Y" address="11238c" elements="3" />
   </table>
-  <table name="Per Injector Pulse Width Compensation A" address="111620">
-    <description>The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md</description>
-    <table name="X" address="1115cc" elements="9" />
-    <table name="Y" address="1115f0" elements="12" />
+  <table name="Per Injector Pulse Width Compensation A" address="111620" scaling="PerInjectorBRZ">
+    <table name="X" address="1115cc" elements="9" scaling="ms"/>
+    <table name="Y" address="1115f0" elements="12" scaling="RPM"/>
   </table>
-  <table name="Per Injector Pulse Width Compensation B" address="1116e0">
-    <description>The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md</description>
-    <table name="X" address="11168c" elements="9" />
-    <table name="Y" address="1116b0" elements="12" />
+  <table name="Per Injector Pulse Width Compensation B" address="1116e0" scaling="PerInjectorBRZ">
+    <table name="X" address="11168c" elements="9" scaling="ms"/>
+    <table name="Y" address="1116b0" elements="12" scaling="RPM"/>
   </table>
-  <table name="Per Injector Pulse Width Compensation C" address="1117a0">
-    <description>The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md</description>
-    <table name="X" address="11174c" elements="9" />
-    <table name="Y" address="111770" elements="12" />
+  <table name="Per Injector Pulse Width Compensation C" address="1117a0" scaling="PerInjectorBRZ">
+    <table name="X" address="11174c" elements="9" scaling="ms"/>
+    <table name="Y" address="111770" elements="12" scaling="RPM"/>
   </table>
-  <table name="Per Injector Pulse Width Compensation D" address="111860">
-    <description>The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md</description>
-    <table name="X" address="11180c" elements="9" />
-    <table name="Y" address="111830" elements="12" />
+  <table name="Per Injector Pulse Width Compensation D" address="111860" scaling="PerInjectorBRZ">
+    <table name="X" address="11180c" elements="9" scaling="ms"/>
+    <table name="Y" address="111830" elements="12" scaling="RPM"/>
   </table>
-  <table name="Per Injector Pulse Width Compensation E" address="111920">
-    <description>The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.</description>
-    <table name="X" address="1118cc" elements="9" />
-    <table name="Y" address="1118f0" elements="12" />
+  <table name="Per Injector Pulse Width Compensation E" address="111920" scaling="PerInjectorBRZ">
+    <table name="X" address="1118cc" elements="9" scaling="ms"/>
+    <table name="Y" address="1118f0" elements="12" scaling="RPM"/>
   </table>
-  <table name="Per Injector Pulse Width Compensation F" address="1119e0">
-    <description>The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.</description>
-    <table name="X" address="11198c" elements="9" />
-    <table name="Y" address="1119b0" elements="12" />
+  <table name="Per Injector Pulse Width Compensation F" address="1119e0" scaling="PerInjectorBRZ">
+    <table name="X" address="11198c" elements="9" scaling="ms"/>
+    <table name="Y" address="1119b0" elements="12" scaling="RPM"/>
   </table>
-  <table name="Per Injector Pulse Width Compensation G" address="111aa0">
-    <description>The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.</description>
-    <table name="X" address="111a4c" elements="9" />
-    <table name="Y" address="111a70" elements="12" />
+  <table name="Per Injector Pulse Width Compensation G" address="111aa0" scaling="PerInjectorBRZ">
+    <table name="X" address="111a4c" elements="9" scaling="ms"/>
+    <table name="Y" address="111a70" elements="12" scaling="RPM"/>
   </table>
-  <table name="Per Injector Pulse Width Compensation H" address="111b60">
-    <description>The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.</description>
-    <table name="X" address="111b0c" elements="9" />
-    <table name="Y" address="111b30" elements="12" />
+  <table name="Per Injector Pulse Width Compensation H" address="111b60" scaling="PerInjectorBRZ">
+    <table name="X" address="111b0c" elements="9" scaling="ms"/>
+    <table name="Y" address="111b30" elements="12" scaling="RPM"/>
   </table>
   <table name="Cranking Fuel Injector Pulse Width A (ECT)_" address="1120a8" category="Fueling - Cranking" type="3D" level="1" scaling="InjectorPulseWidth(ms)">
     <table name="Coolant Temperature" address="10cd78" type="X Axis" elements="16" scaling="DegreesF"/>
@@ -245,7 +237,7 @@ For Per Injector Pulse Width Compensation and Transient Ignition Retard, the add
     <table name="Y" address="110ad4" />
   </table>
   <table name="Total Injection Ratio Port Hot" address="110bcc">
-    <description>この ROM ではプログラムがゲートを毎回 0 にするので、この表は読まれない。60 以上では Warm を読む。ZA1JF00A-definition-list.ja.md または ZA1JF00A-definition-list.en.md を見ること。 On this ROM the program clears the gate on every call, so this map is not read. From 60 up the ECU reads Warm. See ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.</description>
+    <description>On this ROM the program clears the gate on every call, so this map is not read. From 60 up the ECU reads Warm. See ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.</description>
     <table name="X" address="110b74" />
     <table name="Y" address="110ba4" />
   </table>
@@ -269,14 +261,13 @@ For Per Injector Pulse Width Compensation and Transient Ignition Retard, the add
     <table name="X" address="1167b0" elements="9" />
     <table name="Y" address="1167d4" elements="9" />
   </table>
-  <table name="Transient Ignition Retard" address="116a98">
-    <description> The address is correct but the formula is not. Do not trust the displayed values. Read ZA1JF00A-definition-list.ja.md or ZA1JF00A-definition-list.en.md.</description>
-    <table name="X" address="116a1c" elements="7" />
-    <table name="Y" address="116a38" elements="24" />
+  <table name="Transient Ignition Retard" address="116a98" scaling="TransientRetardBRZ">
+    <table name="X" address="116a1c" elements="7" scaling="g/rev"/>
+    <table name="Y" address="116a38" elements="24" scaling="RPM"/>
   </table>
-  <table name="Transient Ignition Retard Temperature Compensation" address="1169ac">
-    <table name="X" address="116950" elements="16" />
-    <table name="Y" address="116990" elements="7" />
+  <table name="Transient Ignition Retard Temperature Compensation" address="1169ac" scaling="TransientRetardTempBRZ">
+    <table name="Coolant Temperature" address="116950" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+    <table name="Intake Temperature" address="116990" type="Y Axis" elements="7" scaling="DegreesF"/>
   </table>
   <table name="Desired Overrun Mass Airflow A" address="119a14">
     <table name="X" address="119980" elements="21" />
