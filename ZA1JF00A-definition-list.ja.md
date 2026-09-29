@@ -74,16 +74,16 @@ Author: S.S
 | --- | --- | --- |
 | Injector Flow Scaling | 不明 `10ed28` | 流量の定数が1か所に定まらなかった。`10ed28` の中身は 50.0 で、それらしい値だが証明できていない |
 | MAF Compensation A/B (IAT) | 定義に無し | この ROM の定義は MAF Compensation (IAT) だけを参照している |
-| Manifold Pressure Sensor Scaling | 不明 `11f860` | 倍率と切片の組が多数あり、1か所に定まらない。`11f860` の中身は 0.0 で、この ROM の換算ではない |
+| Manifold Pressure Sensor Scaling | 不明 `11f860` | 倍率と切片の組が多数あり、まだ 1 か所に絞れていない。`11f860` の中身は 0.0 で、この ROM の換算ではない |
 | Knock Correction Advance Max A | 不明 `119c44` | 共通定義 `32BITBASE.xml` は負荷16×回転18、`ZA1JF00C.xml` は負荷14×回転23。この ROM の 14×23 は Base Timing A/B と燃料の 3 枚だけ、16×18 は要求トルク A だけ。ノック上限の表はこの形では存在しない |
 | Tip-in Enrichment Compensation（18 点曲線） | 不明 `10efec`、`10f058`、`10f07c`、`10f09c` | `6523c` は `fff8b3ff` が 1 のとき記述子 `b5148`（`10efec`）と `b5170`（`10f07c`）、1 でないとき `b515c`（`10f058`）と `b5184`（`10f09c`）を `11358` で読む。`10efec` と `10f058` の 18 点は同じバイトで、x*0.004 だと 0.924ms から 2.424ms。軸 `10efa4` と `10f010` も同じ（0, 0.98, 1.95, …, 31.3）。`10f07c` と `10f09c` も同じで、16 点とも生値 0x2000。以前の「片方は全部 0」は、この ROM の中身とは違う。フラグを読むのは `4ef2c`、`4f712`、`4fbf8`、`5bc56`、`5bf80`、`64c82`、`6523c`。どれも読みだけで、直接の書き込みは見つかっていない。A と B のどちらがどちらかは決まらない |
 | Solenoid Control / Solenoid Duty | 不明 | 7×5 の未使用マップは `107f9c` の 1 枚だけ。2 つの名前を 1 枚に載せられない |
-| Injector Flow Scaling BRZ | 不明 | Injector Flow Scaling と同じで、流量の定数が 1 か所に定まらない |
-| CL to OL Transition with Delay (Accelerator) / (Base Pulse Width)、CL Delay | 不明 | この ROM では番地が 1 か所に定まっていない |
-| A/F Learning #1 Limits、A/F Learning #1 Airflow Ranges A/B | 不明 | この ROM では番地が 1 か所に定まっていない |
-| Hotstart Enrichment | 不明 | この ROM では番地が 1 か所に定まっていない |
-| GDI Pressure Target A/B、GDI Pressure Multiplier A/B | 不明 | この ROM では番地が 1 か所に定まっていない |
-| Intake Duty Correction A〜D、Exhaust Duty Correction A〜D | 不明 | この ROM では番地が 1 か所に定まっていない |
-| AFR Sensor Heater Duty Cycle A/B、AFR Sensor Heater Protection | 不明 | この ROM では番地が 1 か所に定まっていない |
-| Intake Temp Sensor Scaling | 不明 | この ROM では番地が 1 か所に定まっていない |
-| 1D の定数（回転や負荷のしきい値） | 不明 | 同じ数値の候補が多く、番地を特定できない |
+| Injector Flow Scaling BRZ | 不明 | Injector Flow Scaling と同じで、流量の定数はまだ 1 か所に絞れていない |
+| CL to OL Transition with Delay (Accelerator) / (Base Pulse Width)、CL Delay | 不明 | 番地はまだ 1 か所に絞れていない |
+| A/F Learning #1 Limits、A/F Learning #1 Airflow Ranges A/B | 不明 | 番地はまだ 1 か所に絞れていない |
+| Hotstart Enrichment | 不明 | 番地はまだ 1 か所に絞れていない |
+| GDI Pressure Target A/B、GDI Pressure Multiplier A/B | 不明 | 番地はまだ 1 か所に絞れていない |
+| Intake Duty Correction A〜D、Exhaust Duty Correction A〜D | 不明 | 番地はまだ 1 か所に絞れていない |
+| AFR Sensor Heater Duty Cycle A/B、AFR Sensor Heater Protection | 不明 | 番地はまだ 1 か所に絞れていない |
+| Intake Temp Sensor Scaling | 不明 | 番地はまだ 1 か所に絞れていない |
+| 1D の定数（回転や負荷のしきい値） | 不明 | 同じ数値の候補が多く、番地はまだ特定できていない |

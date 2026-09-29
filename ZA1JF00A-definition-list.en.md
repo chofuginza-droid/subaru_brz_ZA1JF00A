@@ -74,16 +74,16 @@ Removed from the definition file. Where the place was not determined, the addres
 | --- | --- | --- |
 | Injector Flow Scaling | Unknown `10ed28` | The flow constant could not be pinned to one place. The contents at `10ed28` are 50.0, which is a plausible value, but it is not proven |
 | MAF Compensation A/B (IAT) | Not in the definition | This ROM's definition refers only to MAF Compensation (IAT) |
-| Manifold Pressure Sensor Scaling | Unknown `11f860` | There are many slope-and-offset pairs, so it cannot be pinned to one place. The contents at `11f860` are 0.0, which is not this ROM's conversion |
+| Manifold Pressure Sensor Scaling | Unknown `11f860` | There are many slope-and-offset pairs, and it has not yet been narrowed to one place. The contents at `11f860` are 0.0, which is not this ROM's conversion |
 | Knock Correction Advance Max A | Unknown `119c44` | The shared base `32BITBASE.xml` is load 16 × RPM 18, and `ZA1JF00C.xml` is load 14 × RPM 23. In this ROM the only 14×23 maps are Base Timing A/B and the fuel map, and the only 16×18 map is Requested Torque A. A knock-limit map of this shape does not exist |
 | Tip-in Enrichment Compensation (18-point curve) | Unknown `10efec`, `10f058`, `10f07c`, `10f09c` | `6523c` calls `11358` on descriptors `b5148` (`10efec`) and `b5170` (`10f07c`) when `fff8b3ff` is 1, and on `b515c` (`10f058`) and `b5184` (`10f09c`) otherwise. The 18 points at `10efec` and `10f058` are the same bytes: 0.924 ms to 2.424 ms with x*0.004. Axes `10efa4` and `10f010` are also the same (0, 0.98, 1.95, …, 31.3). `10f07c` and `10f09c` are the same too, raw 0x2000 at all 16 points. The earlier note that one curve is all zeros does not match this ROM. The flag is read at `4ef2c`, `4f712`, `4fbf8`, `5bc56`, `5bf80`, `64c82`, and `6523c`. Every one of those is a read. No direct write was found. Which curve is A and which is B is still not determined |
 | Solenoid Control / Solenoid Duty | Unknown | There is only one unused 7×5 map, at `107f9c`. Two names cannot be placed on one map |
-| Injector Flow Scaling BRZ | Unknown | Same as Injector Flow Scaling: the flow constant could not be pinned to one place |
-| CL to OL Transition with Delay (Accelerator) / (Base Pulse Width), CL Delay | Unknown | The address is not pinned to one place in this ROM |
-| A/F Learning #1 Limits, A/F Learning #1 Airflow Ranges A/B | Unknown | The address is not pinned to one place in this ROM |
-| Hotstart Enrichment | Unknown | The address is not pinned to one place in this ROM |
-| GDI Pressure Target A/B, GDI Pressure Multiplier A/B | Unknown | The address is not pinned to one place in this ROM |
-| Intake Duty Correction A–D, Exhaust Duty Correction A–D | Unknown | The address is not pinned to one place in this ROM |
-| AFR Sensor Heater Duty Cycle A/B, AFR Sensor Heater Protection | Unknown | The address is not pinned to one place in this ROM |
-| Intake Temp Sensor Scaling | Unknown | The address is not pinned to one place in this ROM |
-| 1D constants (RPM or load thresholds) | Unknown | Many candidates share the same number, so the address cannot be identified |
+| Injector Flow Scaling BRZ | Unknown | Same as Injector Flow Scaling: the flow constant has not yet been narrowed to one place |
+| CL to OL Transition with Delay (Accelerator) / (Base Pulse Width), CL Delay | Unknown | The address has not yet been narrowed to one place |
+| A/F Learning #1 Limits, A/F Learning #1 Airflow Ranges A/B | Unknown | The address has not yet been narrowed to one place |
+| Hotstart Enrichment | Unknown | The address has not yet been narrowed to one place |
+| GDI Pressure Target A/B, GDI Pressure Multiplier A/B | Unknown | The address has not yet been narrowed to one place |
+| Intake Duty Correction A–D, Exhaust Duty Correction A–D | Unknown | The address has not yet been narrowed to one place |
+| AFR Sensor Heater Duty Cycle A/B, AFR Sensor Heater Protection | Unknown | The address has not yet been narrowed to one place |
+| Intake Temp Sensor Scaling | Unknown | The address has not yet been narrowed to one place |
+| 1D constants (RPM or load thresholds) | Unknown | Many candidates share the same number, and the address has not yet been identified |
