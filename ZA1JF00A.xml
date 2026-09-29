@@ -357,6 +357,7 @@ WARNING: Use at your own risk. The author is not responsible for any damage, inj
   <table name="(P0223) TPS B HIGH INPUT" address="11c308" />
   <table name="(P0230) FUEL PUMP PRIMARY CIRCUIT" address="11c2b4" />
   <table name="(P0300) RANDOM/MULTIPLE CYLINDER MISFIRE DETECTED" address="11bff0" />
+  <table name="(P0300) RANDOM/MULTIPLE CYLINDER MISFIRE DETECTED 2" address="11bffc" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable" />
   <table name="(P0327) KNOCK SENSOR 1 LOW INPUT" address="11c068" />
   <table name="(P0328) KNOCK SENSOR 1 HIGH INPUT" address="11c074" />
   <table name="(P0332) KNOCK SENSOR 2 LOW INPUT" address="11c050" />
