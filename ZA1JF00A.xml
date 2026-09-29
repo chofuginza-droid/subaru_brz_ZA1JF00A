@@ -23,6 +23,7 @@ WARNING: Use at your own risk. The author is not responsible for any damage, inj
   <include>32BITBASE</include>
   <scaling name="MAFAfterStart(g/s)" units="g/s" toexpr="x*0.004577637" frexpr="x/0.004577637" format="%.1f" min="0" max="80" inc="0.1" storagetype="uint16" endian="big"/>
   <scaling name="RetardBRZ(degrees)u8" units="Retard (degrees)" toexpr="x-40" frexpr="x+40" format="%.2f" min="-40" max="40" inc="1" storagetype="uint8" endian="big"/>
+<scaling name="RetardBRZ(degrees)u16" units="Retard (degrees)" toexpr="x*0.0015258789" frexpr="x/0.0015258789" format="%.2f" min="0" max="100" inc="0.0015258789" storagetype="uint16" endian="big"/>
   <scaling name="PerInjectorBRZ" units="Injector Pulse Width Multiplier" toexpr="x*0.015625" frexpr="x/0.015625" format="%.4f" min="0" max="3.984375" inc="0.015625" storagetype="uint8" endian="big"/>
   <scaling name="TransientRetardBRZ" units="Ignition Timing Correction (degrees)" toexpr="x*0.3515625-50" frexpr="(x+50)/0.3515625" format="%.2f" min="-50" max="39.65" inc="0.3515625" storagetype="uint8" endian="big"/>
   <scaling name="TransientRetardTempBRZ" units="Multiplier" toexpr="x*0.0078125" frexpr="x/0.0078125" format="%.4f" min="0" max="1.9921875" inc="0.0078125" storagetype="uint8" endian="big"/>
@@ -284,6 +285,26 @@ WARNING: Use at your own risk. The author is not responsible for any damage, inj
   <table name="Intake Cam Advance Angle Base AVCS_" address="12201c">
     <table name="X" address="121f98" />
     <table name="Y" address="121fc8" />
+  </table>
+  <table name="Intake Cam Advance Angle High Blend AVCS_" address="121bf8" category="Alpha - BRZ" type="3D" scaling="Advance(degrees)2">
+    <description>Read when blend is 0.4 or more. Below 0.3 the low-blend map is read. From 0.3 up to but not including 0.4 the previous choice is kept. Safe or Normal is not known.</description>
+    <table name="Engine Load" address="121b58" type="X Axis" elements="16" scaling="g/rev"/>
+    <table name="Engine Speed" address="121b98" type="Y Axis" elements="24" scaling="RPM"/>
+  </table>
+  <table name="Intake Cam Advance Angle Low Blend AVCS_" address="121e18" category="Alpha - BRZ" type="3D" scaling="Advance(degrees)2">
+    <description>Read when blend is below 0.3. From 0.3 up to but not including 0.4 the previous choice is kept. Safe or Normal is not known.</description>
+    <table name="Engine Load" address="121d78" type="X Axis" elements="16" scaling="g/rev"/>
+    <table name="Engine Speed" address="121db8" type="Y Axis" elements="24" scaling="RPM"/>
+  </table>
+  <table name="Exhaust Cam Retard Angle High Blend AVCS_" address="1221f8" category="Alpha - BRZ" type="3D" scaling="RetardBRZ(degrees)u16">
+    <description>Read when blend is 0.4 or more. Below 0.3 the low-blend map is read. From 0.3 up to but not including 0.4 the previous choice is kept. Safe or Normal is not known.</description>
+    <table name="Engine Load" address="122158" type="X Axis" elements="16" scaling="g/rev"/>
+    <table name="Engine Speed" address="122198" type="Y Axis" elements="24" scaling="RPM"/>
+  </table>
+  <table name="Exhaust Cam Retard Angle Low Blend AVCS_" address="122598" category="Alpha - BRZ" type="3D" scaling="RetardBRZ(degrees)u16">
+    <description>Read when blend is below 0.3. From 0.3 up to but not including 0.4 the previous choice is kept. Safe or Normal is not known.</description>
+    <table name="Engine Load" address="1224f8" type="X Axis" elements="16" scaling="g/rev"/>
+    <table name="Engine Speed" address="122538" type="Y Axis" elements="24" scaling="RPM"/>
   </table>
   <table name="(P0000) PASS CODE (NO DTC DETECTED)" address="11c92c" />
   <table name="(P000A) A CAMSHAFT POSITION SLOW RESPONSE (BANK 1)" address="11c6a4" />
