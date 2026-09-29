@@ -14,4 +14,4 @@ Author: S.S
 
 調整の前に `ZA1JF00A-definition-list.ja.md` または `ZA1JF00A-definition-list.en.md` を読んでください。
 
-**Warning:** 変更を書き込む前に、ECU を読み出し、元の ROM をバックアップしてください。
+**Warning:** ROM を変更する前に、必ずバックアップを取ってください。

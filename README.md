@@ -16,4 +16,4 @@ Restart EcuFlash after copying.
 
 Read `ZA1JF00A-definition-list.ja.md` or `ZA1JF00A-definition-list.en.md` before tuning.
 
-**Warning:** Before writing any changes, read the ECU and keep a backup of the original ROM.
+**Warning:** Before changing the ROM, always keep a backup.
